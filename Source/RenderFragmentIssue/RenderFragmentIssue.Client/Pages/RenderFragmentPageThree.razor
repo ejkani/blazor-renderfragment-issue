@@ -1,0 +1,28 @@
+﻿@page "/renderfragment/three"
+@inject NavigationManager NavigationManager
+
+@* ------------------------------------------------------------------------------------------------------------------------------------ *@
+@* Cannot use rendermode with RenderFragments. Enabling any of the Interactive modes makes the switch between renderfragments unusable. *@
+@* ------------------------------------------------------------------------------------------------------------------------------------ *@
+@rendermode InteractiveServer
+
+
+<h3>RenderFragmentPage</h3>
+<p>@_renderInfo</p>
+
+<RenderFragmentPageComponent ShowFragmentNamed="@_fragmentName">
+    <FragmentThreeContent>
+        <div>Inner content of fragment three</div>
+    </FragmentThreeContent>
+</RenderFragmentPageComponent>
+
+@code {
+    private string _fragmentName = "fragmentNameNotSet";
+    private string _renderInfo = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        _renderInfo += $"|{RendererInfo.Name}, IsInteractive:{RendererInfo.IsInteractive}";
+        _fragmentName = NavigationManager.Uri.Split('/').Last();
+    }
+}

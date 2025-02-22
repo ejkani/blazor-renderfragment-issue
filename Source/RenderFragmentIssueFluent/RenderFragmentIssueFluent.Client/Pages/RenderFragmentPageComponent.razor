@@ -1,0 +1,24 @@
+﻿<h3>RenderFragmentPageComponent</h3>
+
+@if (ShowFragmentNamed == "one")
+{
+    <div>Fragment One</div>
+    @FragmentOneContent
+}
+else if (ShowFragmentNamed == "two")
+{
+    <div>Fragment Two</div>
+    @FragmentTwoContent
+}
+else
+{
+    <div>Invalid fragment name</div>
+}
+
+@code {
+    [Inject] NavigationManager NavigationManager { get; set; } = null!;
+    [Parameter] public string? ShowFragmentNamed { get; set; }
+    [Parameter] public RenderFragment FragmentOneContent { get; set; } = null!;
+    [Parameter] public RenderFragment FragmentTwoContent { get; set; } = null!;
+
+}
