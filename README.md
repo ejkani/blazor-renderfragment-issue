@@ -11,7 +11,10 @@
 
 * `RenderFragmentPageOneAndTwo.razor` combines two routes. Only the first route hit is rendered as expected.
 
+Location of these files: `Source\RenderFragmentIssue\RenderFragmentIssue.Client\Pages`
+
 ```csharp
+// Combining two routes in one page
 @page "/renderfragment/one"
 @page "/renderfragment/two"
 ```
